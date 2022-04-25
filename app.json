@@ -17,7 +17,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shivabhaggan.reactnativestripe"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,6 +28,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.test.com",
+          "enableGooglePay": true
+        }
+      ]
+    ]
   }
 }

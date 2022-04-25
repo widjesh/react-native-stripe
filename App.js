@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import Toast from "react-native-toast-message";
+import { StripeProvider } from "@stripe/stripe-react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import Screens from "./src/screens/Screens";
+import Text from "./src/components/CustomeText";
+import * as Linking from "expo-linking";
 
-export default function App() {
+
+const prefix = Linking.createURL("/");
+
+const App = () => {
+  const linking = {
+    prefixes: [prefix],
+    config: {
+      screens: {
+        Order: "orders"
+      }
+    }
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StripeProvider
+        publishableKey={
+          "publishableKey"
+        }
+      >
+        <NavigationContainer linking={linking}>
+        <Screens />
+        </NavigationContainer>
+      <Toast />
+      </StripeProvider>
+    </>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
+export default App;
