@@ -3,7 +3,6 @@ import Toast from "react-native-toast-message";
 import { StripeProvider } from "@stripe/stripe-react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Screens from "./src/screens/Screens";
-import Text from "./src/components/CustomeText";
 import * as Linking from "expo-linking";
 
 
